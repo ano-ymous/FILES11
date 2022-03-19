@@ -15,11 +15,12 @@ public class SalesRecord {
     private double time_on_site;
     private int clicks_in_site;
 
-
     public SalesRecord() {
     }
-// Constructor to initialize values
-    public SalesRecord(Date date, int customer_id, int product_category, String payment_method, double amount, double time_on_site, int clicks_in_site) {
+
+    // Constructor to initialize values
+    public SalesRecord(Date date, int customer_id, int product_category, String payment_method, double amount,
+                       double time_on_site, int clicks_in_site) {
         this.date = date;
         this.customer_id = customer_id;
         this.product_category = product_category;
@@ -30,7 +31,7 @@ public class SalesRecord {
     }
 
     public Date getDate() {
-        return null;
+        return date;
     }
 
     public void setDate(Date date) {
@@ -38,7 +39,7 @@ public class SalesRecord {
     }
 
     public int getCustomer_id() {
-        return 0;
+        return customer_id;
     }
 
     public void setCustomer_id(int customer_id) {
@@ -46,7 +47,7 @@ public class SalesRecord {
     }
 
     public int getProduct_category() {
-        return 0;
+        return product_category;
     }
 
     public void setProduct_category(int product_category) {
@@ -54,7 +55,7 @@ public class SalesRecord {
     }
 
     public String getPayment_method() {
-        return null;
+        return payment_method;
     }
 
     public void setPayment_method(String payment_method) {
@@ -62,7 +63,7 @@ public class SalesRecord {
     }
 
     public double getAmount() {
-        return 0;
+        return amount;
     }
 
     public void setAmount(double amount) {
@@ -70,7 +71,7 @@ public class SalesRecord {
     }
 
     public double getTime_on_site() {
-        return 0;
+        return time_on_site;
     }
 
     public void setTime_on_site(double time_on_site) {
@@ -78,7 +79,7 @@ public class SalesRecord {
     }
 
     public int getClicks_in_site() {
-        return 0;
+        return clicks_in_site;
     }
 
     public void setClicks_in_site(int clicks_in_site) {
@@ -88,8 +89,12 @@ public class SalesRecord {
     @Override
     public String toString() {
         // The record must be returned in the below format
-        // SalesRecord{date=xxx, customer_id=xx, product_category=xx, payment_method='xxx', amount=xx, time_on_site=xx, clicks_in_site=xx}
-        return null;
+        // SalesRecord{date=xxx, customer_id=xx, product_category=xx,
+        // payment_method='xxx', amount=xx, time_on_site=xx, clicks_in_site=xx}
+
+        return "SalesRecord{date=" + date + ", customer_id=" + customer_id + ", product_category=" + product_category
+                + ", payment_method='" + payment_method + "', amount=" + amount + ", time_on_site=" + time_on_site
+                + ", clicks_in_site=" + clicks_in_site + "}";
 
     }
 }
