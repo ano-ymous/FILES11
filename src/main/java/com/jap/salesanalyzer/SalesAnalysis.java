@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -52,28 +53,30 @@ public class SalesAnalysis {
         int i = 0;
         String line = "";
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
+        BufferedReader br = null;
         try {
-            BufferedReader br = new BufferedReader(new FileReader(fileName));
-            br.skip(99);
+            br = new BufferedReader(new FileReader(fileName));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            br.skip(100);
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
-                salesData[i] = new SalesRecord(formatter.parse(values[0]), Integer.parseInt(values[1]),
+                Date date;
+                try {
+                    date = formatter.parse(values[0]);
+                }
+                catch (ParseException e){
+                    throw e;
+                }
+                salesData[i] = new SalesRecord(date, Integer.parseInt(values[1]),
                         Integer.parseInt(values[2]), values[3], Double.parseDouble(values[4]),
                         Double.parseDouble(values[5]), Integer.parseInt(values[6]));
                 i++;
             }
-        }catch (ParseException e) {
-            throw e;
-        }catch (NumberFormatException e) {
-            throw e;
-        } catch (NullPointerException e) {
-            throw e;
-        }  catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (IllegalArgumentException e) {
-            throw e;
         }
         return salesData;
     }
